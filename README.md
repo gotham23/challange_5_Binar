@@ -2,16 +2,16 @@
 
 ## challenge-05 : Car Management Dashboard
 #ch5
--npm run create
--npm run migrate
+npm run create
+npm run migrate
 npm run seed
 npm run start
 #Kelompok-5
 
-azlan
-annas
-faishal
-fikri
+#azlan
+#annas
+#faishal
+#fikri
 ERD
 erd-kel5
 
