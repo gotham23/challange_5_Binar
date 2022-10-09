@@ -6,21 +6,21 @@
 * npm run migrate
 * npm run seed
 * npm run start
-# Kelompok-5
+## Kelompok-5
 
 * azlan
 * annas
 * faishal
 * fikri
-# ERD
+## ERD
 * erd-kel5
 ![ERD rental Mobil](https://user-images.githubusercontent.com/79896243/194761264-2048d021-bf2d-4c4f-99bd-528e1bbe1019.png)
 
-# Link
+## Link
 * "http://localhost:8000/" -> beranda
 * "http://localhost:8000/form" -> form create
 * "http://localhost:8000/form/1" -> edit sesuai id
-# EndPoint
+## EndPoint
 * GET("/api/v1/cars") : untuk mendapatkan semua data mobil
 * GET("/api/v1/cars/:id") : untuk mendapatkan data mobil berdasarkan id
 * POST("/api/v1/cars") : untuk menampilkan data mobil
