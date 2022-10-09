@@ -1,0 +1,125 @@
+<div class="col sm-8">
+    <div class="content">
+        <div class="content-list">
+            <ul>
+                <li>
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item text-content-2">Cars</a></li>
+                            <li class="breadcrumb-item text-content-2" aria-current="page"><a href="/">List
+                                    Cars</a></li>
+                            <li class="breadcrumb-item active text-content-2" aria-current="page" id="breadcrumb-text">
+                                <%= title %>
+                            </li>
+                        </ol>
+                    </nav>
+                </li>
+                <li>
+                    <div class="text-content-3">
+                        <%= title %>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="form">
+            <form action="" method="post">
+                <div class="form-input">
+                    <table>
+                        <tr>
+                            <td><label for="name">Nama*</label></td>
+                            <td><input type="text" id="name" value="<%= name %>" placeholder="Avanza"
+                                    class="form-control" style="margin-left: 30%; margin-bottom: 3%;"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="price">Sewa Per Hari*</label></td>
+                            <td><input type="text" id="price" value="<%= price %>" placeholder="Rp 0,-"
+                                    class="form-control" style="margin-left: 30%; margin-bottom: 3%;"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="size">Ukuran*</label>
+                            <td><select name="size" id="size" value="<%= size_id %>" class="form-control"
+                                    style="margin-left: 30%; margin-bottom: 3%;">
+                                    <option value="1">Small</option>
+                                    <option value="2">Medium</option>
+                                    <option value="3">Large</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="attachment">Foto*</label></td>
+                            <td><input type="file" id="attachment" value="<%= photo %>"
+                                    placeholder="https://placeimg.com/640/480/any" class="form-control"
+                                    style="margin-left: 30%; margin-bottom: 3%;"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tombol">
+                    <a type="button" href="/" class="btn btn-outline-primary" id="cancel">
+                        Cancel
+                    </a>
+                    <a type="submit" href="/" class="btn btn-primary" id="save">
+                        Save
+                    </a>
+                </div>
+            </form>
+        </div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            const api = axios.create({
+                baseURL: "http://localhost:8000",
+            })
+
+            let id = '<%= id %>';
+            let name = document.getElementById("name")
+            let price = document.getElementById("price")
+            let size = document.getElementById("size")
+            let attachment = document.getElementById("attachment")
+            let save = document.getElementById("save")
+            let uploadedUrl = ""
+
+            attachment.onchange = function (e) {
+                uploadFile(e.target.files[0])
+            }
+
+            save.onclick = function (e) {
+                e.preventDefault();
+                if (id) {
+                    updateCar(id);
+                } else {
+                    createCar()
+                }
+                window.alert("Data Berhasil Disimpan")
+                window.location.replace("/")
+            }
+
+            function createCar() {
+                api.post("/api/v1/cars", {
+                    name: name.value,
+                    price: price.value,
+                    size_id: parseInt(size.value),
+                    photo: uploadedUrl,
+                })
+            }
+
+            function updateCar(id) {
+                api.put(`/api/v1/cars/:${id}`, {
+                    name: name.value,
+                    price: price.value,
+                    size_id: parseInt(size.value),
+                    photo: uploadedUrl,
+                })
+            }
+
+            function uploadFile(fileData) {
+                let form = new FormData() // untuk mengirim/post data dalam multipart data
+                form.append("attachment", fileData)
+                api.post("/api/v1/cars-upload", form, {
+                    "content-type": "multipart/form-data"
+                }).then(res => {
+                    uploadedUrl = res.data.url
+                })
+            }
+
+        </script>
+    </div>
+</div>

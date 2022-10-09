@@ -1,0 +1,140 @@
+<div class="col sm-8">
+    <div class="content">
+        <div class="content-list">
+            <ul>
+                <li>
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item text-content-2">Cars</a></li>
+                            <li class="breadcrumb-item text-content-2" aria-current="page"><a href="/">
+                                    List Cars</a></li>
+                        </ol>
+                    </nav>
+                </li>
+                </li>
+                <li>
+                    <div class="text-content-3">List Cars</div>
+                </li>
+                <li>
+                    <a button class="btn" id="btn-add" href="/form"><i class="fa fa-plus"></i>&nbsp; &nbsp; Add New
+                        Car</button></a>
+                </li>
+            </ul>
+        </div>
+        <div class="size">
+            <div class="row">
+                <div class="col" style="margin-left: 35px">
+                    <button class="btn btn-outline-primary" type="button" onclick="setSize(0)" id="btn-search"
+                        value="0">All</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-primary" type="button" onclick="setSize(1)" id="btn-search"
+                        value="1">Small</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-primary" type="button" onclick="setSize(2)" id="btn-search"
+                        value="2">Medium</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-primary" type="button" onclick="setSize(3)" id="btn-search"
+                        value="3">Large</button>
+                </div>
+            </div>
+        </div>
+        <div class="container row list-cars" style="margin-left: -35px;">
+
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    const api = axios.create({
+        baseURL: "http://localhost:8000",
+    })
+
+    let listcars = document.querySelector(".list-cars")
+
+    let size = 0;
+
+    function setSize(size_id) {
+        size = size_id
+        getListCars()
+    }
+
+    async function getListCars() {
+        const car = await api.get("/api/v1/cars")
+        let listcar = "";
+        const dataFromDb = car.data;
+
+        if (size == 0) {
+            for (let i in dataFromDb) {
+                listcar +=
+                    `
+            <div class="col-sm-4 col-sm-4 col-sm-4 mt-3">
+                <div class="card" style="width:290px;">
+                    <div style="margin: 20px 0px 0px 20px">
+                        <img src="${dataFromDb[i].photo}" height="200" width="250">
+                    </div>
+                    <div class="card-body">
+                        <p><strong>${dataFromDb[i].name}</strong></p>
+                        <p><strong>${dataFromDb[i].price.toLocaleString('id', { style: 'currency', currency: 'IDR' })}/ hari</strong></p>
+                        <p><span><img src="/assets/img/clock.svg"/>&nbsp;Updated at ${dataFromDb[i].updatedAt}</span></p>
+                        <p>id = ${dataFromDb[i].id} ; size_id = ${dataFromDb[i].size_id}
+                        <p></p>
+                        <div>
+                            <button onclick="deleteCar(${dataFromDb[i].id})" class="btn" id="delete"><i class="fa fa-trash" aria-hidden="true"></i>
+                                Delete
+                            </button>
+                            <a button href="/form/${dataFromDb[i].id}" class="btn" id="edit"><i class="fa fa-edit" aria-hidden="true"></i>
+                                Edit
+                            </button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+            }
+        } else {
+            for (let i in dataFromDb) {
+                if (size == dataFromDb[i].size_id) {
+                    listcar +=
+                        `
+            <div class="col-sm-4 col-sm-4 col-sm-4 mt-3">
+                <div class="card" style="width:290px;">
+                    <div style="margin: 20px 0px 0px 20px">
+                        <img src="${dataFromDb[i].photo}" height="200" width="250">
+                    </div>
+                    <div class="card-body">
+                        <p><strong>${dataFromDb[i].name}</strong></p>
+                        <p><strong>${dataFromDb[i].price.toLocaleString('id', { style: 'currency', currency: 'IDR' })}/ hari</strong></p>
+                        <p><span><img src="/assets/img/clock.svg"/>&nbsp;Updated at ${dataFromDb[i].updatedAt}</span></p>
+                        <p>id = ${dataFromDb[i].id} ; size_id = ${dataFromDb[i].size_id}
+                        <p></p>
+                        <div>
+                            <button onclick="deleteCar(${dataFromDb[i].id})" class="btn" id="delete"><i class="fa fa-trash" aria-hidden="true"></i>
+                                Delete
+                            </button>
+                            <a button href="/form/${dataFromDb[i].id}" class="btn" id="edit"><i class="fa fa-edit" aria-hidden="true"></i>
+                                Edit
+                            </button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+                }
+            }
+        }
+
+        listcars.innerHTML = listcar;
+    }
+
+    function deleteCar(id) {
+        api.delete(`/api/v1/cars/:${id}`);
+        window.alert('Data Berhasil Dihapus')
+        window.location.reload();
+    }
+
+    getListCars();
+
+</script>
