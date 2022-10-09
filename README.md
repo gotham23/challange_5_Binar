@@ -1,7 +1,7 @@
 # Course Binar Academy : Full Stack Web Development
 
 ## challenge-05 : Car Management Dashboard
-ch5
+#ch5
 npm run create
 npm run migrate
 npm run seed
@@ -15,11 +15,11 @@ fikri
 ERD
 erd-kel5
 
-Link
+#Link
 "http://localhost:8000/" -> beranda
 "http://localhost:8000/form" -> form create
 "http://localhost:8000/form/1" -> edit sesuai id
-EndPoint
+#EndPoint
 GET("/api/v1/cars") : untuk mendapatkan semua data mobil
 GET("/api/v1/cars/:id") : untuk mendapatkan data mobil berdasarkan id
 POST("/api/v1/cars") : untuk menampilkan data mobil
