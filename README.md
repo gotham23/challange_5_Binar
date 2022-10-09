@@ -6,12 +6,12 @@
 * npm run migrate
 * npm run seed
 * npm run start
-#Kelompok-5
+# Kelompok-5
 
-# azlan
-# annas
-# faishal
-# fikri
+* azlan
+* annas
+* faishal
+* fikri
 ERD
 erd-kel5
 
