@@ -31,6 +31,6 @@
 # Request Body
 ![WhatsApp Image 2022-10-09 at 21 04 19](https://user-images.githubusercontent.com/79896243/194761717-4a6a8c65-fb90-4eac-b0d8-85cf4ea5105c.jpeg)
 
-# Responds Body
+# Respone Body
 ![WhatsApp Image 2022-10-09 at 21 04 20](https://user-images.githubusercontent.com/79896243/194761709-e7885ba8-3244-43e5-9230-8b2d6ef5be7e.jpeg)
 
