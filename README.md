@@ -12,8 +12,9 @@
 * annas
 * faishal
 * fikri
-ERD
-erd-kel5
+# ERD
+* erd-kel5
+![ERD rental Mobil](https://user-images.githubusercontent.com/79896243/194761264-2048d021-bf2d-4c4f-99bd-528e1bbe1019.png)
 
 #Link
 "http://localhost:8000/" -> beranda
