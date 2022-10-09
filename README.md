@@ -29,6 +29,8 @@
 * DELETE("/api/v1/cars/:id") : untuk menghapus data mobil
 
 # Request Body
-(https://user-images.githubusercontent.com/113892212/194761281-9ddd52b9-4685-40aa-8a2d-00d394f0c6a0.png)
+![WhatsApp Image 2022-10-09 at 21 04 19](https://user-images.githubusercontent.com/79896243/194761717-4a6a8c65-fb90-4eac-b0d8-85cf4ea5105c.jpeg)
+
 # Responds Body
-(https://user-images.githubusercontent.com/113892212/194761280-f28112c3-738a-4ba9-bba2-c353450b8c3a.png)
+![WhatsApp Image 2022-10-09 at 21 04 20](https://user-images.githubusercontent.com/79896243/194761709-e7885ba8-3244-43e5-9230-8b2d6ef5be7e.jpeg)
+
