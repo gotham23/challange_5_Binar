@@ -16,14 +16,14 @@
 * erd-kel5
 ![ERD rental Mobil](https://user-images.githubusercontent.com/79896243/194761264-2048d021-bf2d-4c4f-99bd-528e1bbe1019.png)
 
-#Link
-"http://localhost:8000/" -> beranda
-"http://localhost:8000/form" -> form create
-"http://localhost:8000/form/1" -> edit sesuai id
-#EndPoint
-GET("/api/v1/cars") : untuk mendapatkan semua data mobil
-GET("/api/v1/cars/:id") : untuk mendapatkan data mobil berdasarkan id
-POST("/api/v1/cars") : untuk menampilkan data mobil
-POST("/api/v1/cars-upload") : untuk menampilkan data mobil melalui form
-PUT("/api/v1/cars/:id") : untuk memperbarui data mobil
-DELETE("/api/v1/cars/:id") : untuk menghapus data mobil
+# Link
+* "http://localhost:8000/" -> beranda
+* "http://localhost:8000/form" -> form create
+* "http://localhost:8000/form/1" -> edit sesuai id
+# EndPoint
+* GET("/api/v1/cars") : untuk mendapatkan semua data mobil
+* GET("/api/v1/cars/:id") : untuk mendapatkan data mobil berdasarkan id
+* POST("/api/v1/cars") : untuk menampilkan data mobil
+* POST("/api/v1/cars-upload") : untuk menampilkan data mobil melalui form
+* PUT("/api/v1/cars/:id") : untuk memperbarui data mobil
+* DELETE("/api/v1/cars/:id") : untuk menghapus data mobil
